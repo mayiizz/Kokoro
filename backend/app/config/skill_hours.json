@@ -1,0 +1,41 @@
+{
+    "python": {
+        "hours": 120
+    },
+    "data structures": {
+        "hours": 100
+    },
+    "statistics": {
+        "hours": 120
+    },
+    "linear algebra": {
+        "hours": 100
+    },
+    "machine learning": {
+        "hours": 200
+    },
+    "deep learning": {
+        "hours": 220
+    },
+    "nlp fundamentals": {
+        "hours": 180
+    },
+    "transformers": {
+        "hours": 200
+    },
+    "mlops basics": {
+        "hours": 120
+    },
+    "sql": {
+        "hours": 60
+    },
+    "git": {
+        "hours": 30
+    },
+    "data visualization": {
+        "hours": 80
+    },
+    "deployment": {
+        "hours": 80
+    }
+}

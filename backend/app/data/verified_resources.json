@@ -1,0 +1,158 @@
+{
+  "resources": [
+    {
+      "keywords": ["guitar", "open chord", "beginner"],
+      "types": ["course"],
+      "title": "JustinGuitar Beginner Course — Grade 1",
+      "url": "https://www.justinguitar.com/guitar-lessons/beginner-guitar-course-grade-1-bc-101",
+      "about": "Free structured beginner course covering first chords and simple songs."
+    },
+    {
+      "keywords": ["guitar", "open chord"],
+      "types": ["course", "website"],
+      "title": "JustinGuitar — Open chords module",
+      "url": "https://www.justinguitar.com/modules/open-chords",
+      "about": "Official JustinGuitar module for the most common open chords."
+    },
+    {
+      "keywords": ["guitar", "open chord"],
+      "types": ["video"],
+      "title": "Open chords for beginners — YouTube",
+      "url": "https://www.youtube.com/results?search_query=justinguitar+open+chords+beginner",
+      "about": "JustinGuitar and other beginner videos that form and switch open chords."
+    },
+    {
+      "keywords": ["guitar", "hal leonard", "textbook", "method book"],
+      "types": ["textbook"],
+      "title": "Hal Leonard Guitar Method Book 1",
+      "url": "https://openlibrary.org/search?q=Hal+Leonard+Guitar+Method+Book+1",
+      "about": "Find the official Hal Leonard beginner method book."
+    },
+    {
+      "keywords": ["guitar", "handbook", "ralph denyer"],
+      "types": ["textbook"],
+      "title": "The Guitar Handbook — Ralph Denyer",
+      "url": "https://www.penguinrandomhouse.com/books/39069/the-guitar-handbook-by-ralph-denyer/",
+      "about": "Reference handbook covering chords, rhythm, and technique."
+    },
+    {
+      "keywords": ["guitar", "chord transition", "switching"],
+      "types": ["course", "website"],
+      "title": "JustinGuitar — Changing chords",
+      "url": "https://www.justinguitar.com/guitar-lessons/one-minute-changes-bc-113",
+      "about": "Timed chord-change practice from the beginner course."
+    },
+    {
+      "keywords": ["guitar", "chord transition", "switching"],
+      "types": ["video"],
+      "title": "Chord changes for beginners — YouTube",
+      "url": "https://www.youtube.com/results?search_query=justinguitar+chord+changes+one+minute",
+      "about": "Video lessons on switching between open chords cleanly."
+    },
+    {
+      "keywords": ["guitar", "strumming"],
+      "types": ["course", "website"],
+      "title": "JustinGuitar — Strumming patterns",
+      "url": "https://www.justinguitar.com/modules/strumming",
+      "about": "Official strumming module with patterns and timing."
+    },
+    {
+      "keywords": ["guitar", "strumming"],
+      "types": ["video"],
+      "title": "Strumming patterns — YouTube",
+      "url": "https://www.youtube.com/results?search_query=justinguitar+strumming+patterns+beginner",
+      "about": "JustinGuitar and Marty Music strumming lessons."
+    },
+    {
+      "keywords": ["guitar", "rhythm"],
+      "types": ["course", "website", "video"],
+      "title": "JustinGuitar — Rhythm guitar",
+      "url": "https://www.justinguitar.com/modules/rhythm-guitar",
+      "about": "Rhythm feel, counting, and playing in time."
+    },
+    {
+      "keywords": ["guitar", "fretboard"],
+      "types": ["course", "website"],
+      "title": "JustinGuitar — Notes on the neck",
+      "url": "https://www.justinguitar.com/modules/notes-on-the-neck",
+      "about": "Learn the notes on the fretboard in a structured order."
+    },
+    {
+      "keywords": ["guitar", "fretboard"],
+      "types": ["video"],
+      "title": "Fretboard notes — YouTube",
+      "url": "https://www.youtube.com/results?search_query=justinguitar+notes+on+the+neck",
+      "about": "Video walkthroughs of the guitar fretboard."
+    },
+    {
+      "keywords": ["guitar", "scale", "pentatonic", "major scale"],
+      "types": ["course", "website"],
+      "title": "JustinGuitar — Scales",
+      "url": "https://www.justinguitar.com/modules/scales",
+      "about": "Major and pentatonic scale patterns for beginners."
+    },
+    {
+      "keywords": ["guitar", "scale"],
+      "types": ["video"],
+      "title": "Beginner guitar scales — YouTube",
+      "url": "https://www.youtube.com/results?search_query=justinguitar+minor+pentatonic+scale",
+      "about": "Video lessons for the first guitar scales."
+    },
+    {
+      "keywords": ["guitar", "technique", "right hand", "fingerstyle"],
+      "types": ["course", "website"],
+      "title": "JustinGuitar — Technique",
+      "url": "https://www.justinguitar.com/modules/technique",
+      "about": "Right-hand and left-hand technique drills."
+    },
+    {
+      "keywords": ["guitar", "technique", "right hand", "fingerstyle"],
+      "types": ["video"],
+      "title": "Guitar technique — YouTube",
+      "url": "https://www.youtube.com/results?search_query=justinguitar+right+hand+technique",
+      "about": "Video lessons on picking and fingerstyle basics."
+    },
+    {
+      "keywords": ["guitar", "song", "repertoire", "wonderwall"],
+      "types": ["course", "website"],
+      "title": "JustinGuitar — Easy songs",
+      "url": "https://www.justinguitar.com/modules/easy-songs",
+      "about": "Beginner song list that uses open chords."
+    },
+    {
+      "keywords": ["guitar", "song", "repertoire", "wonderwall"],
+      "types": ["video"],
+      "title": "Easy beginner guitar songs — YouTube",
+      "url": "https://www.youtube.com/results?search_query=justinguitar+easy+songs+for+beginners",
+      "about": "Play-along videos for first songs."
+    },
+    {
+      "keywords": ["guitar"],
+      "types": ["course", "website"],
+      "title": "Andy Guitar — Beginner course",
+      "url": "https://www.andyguitar.co.uk/online-lessons",
+      "about": "Free beginner guitar course with songs and chord lessons."
+    },
+    {
+      "keywords": ["guitar"],
+      "types": ["video"],
+      "title": "JustinGuitar YouTube channel",
+      "url": "https://www.youtube.com/@JustinGuitar",
+      "about": "Official JustinGuitar video lessons."
+    },
+    {
+      "keywords": ["guitar"],
+      "types": ["textbook"],
+      "title": "Hal Leonard Guitar Method Book 1",
+      "url": "https://openlibrary.org/search?q=Hal+Leonard+Guitar+Method+Book+1",
+      "about": "Standard beginner guitar textbook."
+    },
+    {
+      "keywords": ["music theory"],
+      "types": ["website", "course"],
+      "title": "musictheory.net lessons",
+      "url": "https://www.musictheory.net/lessons",
+      "about": "Free interactive music-theory lessons."
+    }
+  ]
+}

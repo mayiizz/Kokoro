@@ -1,0 +1,35 @@
+{
+    "nlp engineer": [
+        "python",
+        "statistics",
+        "linear algebra",
+        "machine learning",
+        "deep learning",
+        "nlp fundamentals",
+        "transformers",
+        "mlops basics",
+        "git"
+    ],
+    "ml engineer": [
+        "python",
+        "data structures",
+        "statistics",
+        "machine learning",
+        "deep learning",
+        "mlops basics",
+        "sql",
+        "git"
+    ],
+    "data analyst": [
+        "python",
+        "sql",
+        "statistics",
+        "data visualization",
+        "git"
+    ],
+    "frontend developer": [
+        "git",
+        "data structures",
+        "deployment"
+    ]
+}
