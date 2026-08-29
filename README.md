@@ -71,6 +71,33 @@ API: **http://localhost:8000** · Docs: **http://localhost:8000/docs**
 
 Sign in with an email (no password). That email creates or loads a persisted learner.
 
+The frontend calls `/api/...`. Vite proxies that to the backend on port 8000.
+
+## Deploy on Vercel
+
+This repo is two services in one project. Set the Vercel **Application Preset** to **Services**, project name `kokoro`, root `./`.
+
+`vercel.json` already defines:
+
+- **frontend** — Vite at repo root
+- **backend** — FastAPI at `backend/`, entrypoint `app.main:app`
+- Rewrites: `/api` and `/api/*` → backend, everything else → frontend
+
+Do **not** commit `backend/.env`. In Vercel → **Environment Variables**, add at least:
+
+| Key | Notes |
+|-----|--------|
+| `GROQ_API_KEY` | Required for chat, path ranking, quizzes |
+| `TAVILY_API_KEY` | Optional live resource search |
+| `FRONTEND_ORIGIN` | `https://your-project.vercel.app` (and preview URLs, comma-separated) |
+
+After deploy, check:
+
+- `https://YOUR-DOMAIN.vercel.app/` — landing page
+- `https://YOUR-DOMAIN.vercel.app/api` — `{"message":"Kokoro Backend Running"}`
+
+SQLite on Vercel is written to `/tmp` and **does not persist** across instances. For durable data, set `DATABASE_URL` to a hosted database later.
+
 ## API Endpoints
 
 | Endpoint | Description |

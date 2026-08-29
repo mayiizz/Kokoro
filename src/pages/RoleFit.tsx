@@ -8,9 +8,9 @@ import {
   BookOpen,
 } from "lucide-react";
 import { useLearner } from "@/context/LearnerContext";
-import { api } from "@/lib/api";
+import { api, API_BASE } from "@/lib/api";
 
-const API_URL = "http://localhost:8000/api/role-fit/analyze";
+const API_URL = `${API_BASE}/api/role-fit/analyze`;
 
 /* ================= TYPES ================= */
 

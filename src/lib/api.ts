@@ -1,4 +1,5 @@
-export const API_BASE = "http://localhost:8000";
+/** Empty in prod so the browser hits same-origin /api (Vercel rewrite). Locally Vite proxies /api → :8000. */
+export const API_BASE = import.meta.env.VITE_API_BASE ?? "";
 
 export class ApiError extends Error {
   constructor(message: string) {

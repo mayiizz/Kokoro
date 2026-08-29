@@ -1,7 +1,9 @@
 import { useState } from "react";
 import { Search, CheckCircle, AlertTriangle } from "lucide-react";
 
-const API_URL = "http://localhost:8000/api/roadmap/generate";
+import { API_BASE } from "@/lib/api";
+
+const API_URL = `${API_BASE}/api/roadmap/generate`;
 
 type WeeklyRoadmap = {
   week: number;

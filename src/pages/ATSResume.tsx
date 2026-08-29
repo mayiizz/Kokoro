@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Search, FileText, Copy, CheckCircle, AlertTriangle, Download } from "lucide-react";
+import { API_BASE } from "@/lib/api";
 
 type ResumeResponse = {
   ats_optimized_resume_text: string;
@@ -60,7 +61,7 @@ const ATSResume = () => {
     setResult(null);
 
     try {
-      const response = await fetch("http://localhost:8000/api/resume/generate", {
+      const response = await fetch(`${API_BASE}/api/resume/generate`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload())
@@ -88,7 +89,7 @@ const ATSResume = () => {
 
   // download pdf
   const handleDownload = async () => {
-    const res = await fetch("http://localhost:8000/api/resume/download-pdf", {
+    const res = await fetch(`${API_BASE}/api/resume/download-pdf`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload())

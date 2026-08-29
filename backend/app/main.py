@@ -1,3 +1,4 @@
+import os
 from contextlib import asynccontextmanager
 
 from fastapi import FastAPI
@@ -10,6 +11,23 @@ from app.routes import assessment, assistant, catalog, dashboard, learner, path,
 load_dotenv()
 
 
+def _cors_origins() -> list[str]:
+    origins = [
+        "http://localhost:8080",
+        "http://localhost:5173",
+        "http://localhost:3000",
+    ]
+    extra = os.getenv("FRONTEND_ORIGIN", "")
+    origins.extend(part.strip() for part in extra.split(",") if part.strip())
+    vercel_url = os.getenv("VERCEL_URL")
+    if vercel_url:
+        origins.append(f"https://{vercel_url.removeprefix('https://')}")
+    prod = os.getenv("VERCEL_PROJECT_PRODUCTION_URL")
+    if prod:
+        origins.append(f"https://{prod.removeprefix('https://')}")
+    return list(dict.fromkeys(origins))
+
+
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     init_db()
@@ -20,11 +38,7 @@ app = FastAPI(title="Kokoro Backend", version="2.0.0", lifespan=lifespan)
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "http://localhost:8080",
-        "http://localhost:5173",
-        "http://localhost:3000",
-    ],
+    allow_origins=_cors_origins(),
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -44,5 +58,6 @@ app.include_router(skills.router, prefix="/api/skills", tags=["Skills"])
 
 
 @app.get("/")
+@app.get("/api")
 async def root():
     return {"message": "Kokoro Backend Running"}

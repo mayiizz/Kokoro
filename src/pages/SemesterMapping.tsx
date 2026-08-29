@@ -2,9 +2,9 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Search, BookOpen } from "lucide-react";
 import { useLearner } from "@/context/LearnerContext";
-import { api } from "@/lib/api";
+import { api, API_BASE } from "@/lib/api";
 
-const API_URL = "http://localhost:8000/api/semester/analyze";
+const API_URL = `${API_BASE}/api/semester/analyze`;
 
 type Topic = {
   name: string;

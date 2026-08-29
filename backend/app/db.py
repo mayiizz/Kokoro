@@ -5,7 +5,18 @@ from sqlalchemy import create_engine, text
 from sqlalchemy.orm import DeclarativeBase, sessionmaker
 
 _DEFAULT_DB = Path(__file__).resolve().parent.parent / "acadbridge.db"
-DATABASE_URL = os.getenv("DATABASE_URL", f"sqlite:///{_DEFAULT_DB}")
+
+
+def _database_url() -> str:
+    if os.getenv("DATABASE_URL"):
+        return os.environ["DATABASE_URL"]
+    # Vercel Functions can write only to /tmp; this file is not durable across instances.
+    if os.getenv("VERCEL"):
+        return "sqlite:////tmp/kokoro.db"
+    return f"sqlite:///{_DEFAULT_DB}"
+
+
+DATABASE_URL = _database_url()
 
 connect_args = {"check_same_thread": False} if DATABASE_URL.startswith("sqlite") else {}
 engine = create_engine(DATABASE_URL, connect_args=connect_args)
