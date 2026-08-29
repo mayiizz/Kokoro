@@ -7,3 +7,4 @@ requests
 groq
 sqlalchemy
 fpdf2
+psycopg2-binary
