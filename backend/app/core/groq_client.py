@@ -66,9 +66,14 @@ def _is_rate_limit(exc: Exception) -> bool:
     return "429" in text or "rate_limit" in text
 
 
-def _is_truncated_json(exc: Exception) -> bool:
+def _is_json_mode_failure(exc: Exception) -> bool:
     text = str(exc).lower()
-    return "json_validate_failed" in text or "max completion tokens" in text or "failed_generation" in text
+    return (
+        "json_validate_failed" in text
+        or "failed to validate json" in text
+        or "failed_generation" in text
+        or "max completion tokens" in text
+    )
 
 
 def _create(
@@ -100,10 +105,16 @@ def _create(
             return get_client().chat.completions.create(**kwargs)
         except Exception as exc:
             last_error = exc
-            if _is_truncated_json(exc) and kwargs.get("max_tokens") is not None:
-                logger.warning("Groq JSON truncated at max_tokens=%s; retrying without a cap", kwargs.get("max_tokens"))
-                kwargs.pop("max_tokens", None)
-                continue
+            if _is_json_mode_failure(exc):
+                if kwargs.get("response_format") is not None:
+                    logger.warning("Groq JSON mode failed; retrying without response_format")
+                    kwargs.pop("response_format", None)
+                    kwargs.pop("max_tokens", None)
+                    continue
+                if kwargs.get("max_tokens") is not None:
+                    logger.warning("Groq JSON truncated at max_tokens=%s; retrying without a cap", kwargs.get("max_tokens"))
+                    kwargs.pop("max_tokens", None)
+                    continue
             if not _is_rate_limit(exc) or attempt == MAX_RETRIES - 1:
                 raise
             wait = _retry_wait_seconds(exc, attempt)
@@ -112,23 +123,37 @@ def _create(
     raise last_error or RuntimeError("Groq request failed")
 
 
+_JSON_SYSTEM = (
+    "You output only one valid JSON object. Start with { and end with }. "
+    "No markdown fences, no commentary, no trailing text."
+)
+
+
 def get_groq_response(prompt: str, model: Optional[str] = None, max_tokens: Optional[int] = None) -> Dict[str, Any]:
     """Send a prompt to Groq and return parsed JSON."""
     chosen = model or groq_model()
-    completion = _create(
-        [
-            {
-                "role": "system",
-                "content": "You are a helpful assistant that outputs only valid JSON. Keep answers compact.",
-            },
-            {"role": "user", "content": prompt},
-        ],
-        model=chosen,
-        temperature=0,
-        response_format={"type": "json_object"},
-        max_tokens=max_tokens,
-    )
+    messages = [
+        {"role": "system", "content": _JSON_SYSTEM},
+        {"role": "user", "content": f"{prompt}\n\nReturn only a JSON object."},
+    ]
+    try:
+        completion = _create(
+            messages,
+            model=chosen,
+            temperature=0,
+            response_format={"type": "json_object"},
+            max_tokens=max_tokens,
+        )
+    except Exception as exc:
+        if not _is_json_mode_failure(exc):
+            raise
+        logger.warning("Groq JSON mode rejected the reply; retrying as plain text")
+        completion = _create(messages, model=chosen, temperature=0.2, max_tokens=max_tokens)
     response_content = completion.choices[0].message.content
+    if not response_content:
+        logger.warning("Groq returned empty content; retrying without JSON mode")
+        completion = _create(messages, model=chosen, temperature=0.2)
+        response_content = completion.choices[0].message.content
     if not response_content:
         raise ValueError("Empty response from Groq")
     try:
